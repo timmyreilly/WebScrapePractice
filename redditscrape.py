@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from urllib2 import urlopen
 from time import sleep # be nice
 
-BASE_URL = "http://www.chicagoreader.com"
+BASE_URL = "http://reddit.com"
 
 def make_soup(url):
     html = urlopen(url).read()
@@ -24,11 +24,24 @@ def get_category_winner(category_url):
             "category_url": category_url,
             "winner": winner,
             "runners_up": runners_up}
+			
+def get_link_titles(pageURL):
+	soup = make_soup(pageURL)
+	l = soup.find
+    
+def create_title_list(d):
+    l = []
+    for child in d['data']['children']:
+        l.append(child['data']['title'])
+    return l
+    
+def get_words_only    
 
 if __name__ == '__main__':
     print "IN MAIN"
     food_n_drink = ("http://www.chicagoreader.com/chicago/"
                     "best-of-chicago-2011-food-drink/BestOf?oid=4106228")
+    
     
     categories = get_category_links(food_n_drink)
     print categories
@@ -42,4 +55,5 @@ if __name__ == '__main__':
     print data
 
 
-
+# http://www.chicagoreader.com/chicago/best-of-chicago-2011-food-drink/BestOf?oid=4106228
+    
